@@ -61,9 +61,8 @@
     <script type="text/javascript">
     $(function() {
         var sql = location.search.substring(1);
-        $.getJSON("/v1/query?format=aos&q="+sql, function(result){
-            new DataProjector({points : result});
-        });
+        function go3d(x){ new DataProjector({points: x}); }
+        $.getJSON("/v1/query?format=aos&q="+sql, go3d);
     });
    </script>
 </body>

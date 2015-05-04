@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>3d Plugin</title>
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+        <style>
+            body {font-family: Verdana;}
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript">
+            $(function(){
+                $("#go").bind("click", function(e){
+                    e.preventDefault();
+                    var sql = $("#sql").val()
+                            .replace(/\r?\n|\r/gm," ")
+                            .replace(/\s+/g, ' ')
+                            .trim();
+                    $("#output").empty().append(
+                        $("<iframe>", {
+                            src: "data_projector.html?"+sql,
+                            style: "width: 100%; height: 800px;",
+                        })
+                    );
+                });  
+             });
+        </script>
+        <div style="width: 500px; text-align: center; margin: 50px auto;">
+        <form>
+            <textarea id="sql" style="height: 100px; width: 300px; font-size: 20px;">(SQL goes here)</textarea>
+            <br><input type="button" id="go" value="Pivot!">
+        </form>
+        </div>
+        <div id="output"></div>
+
+    </body>
+</html>
